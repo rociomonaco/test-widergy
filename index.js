@@ -41,8 +41,6 @@ function FormatString(sentence) {
   let j = 0;
 
   while (i < sentence.length) {
-    if (sentence.charCodeAt(i) > 127) return "ERROR";
-
     if (
       (sentence.charCodeAt(i) >= 65 && sentence.charCodeAt(i) <= 90) ||
       (sentence.charCodeAt(i) >= 97 && sentence.charCodeAt(i) <= 122) ||
@@ -56,7 +54,16 @@ function FormatString(sentence) {
     }
     i += 1;
   }
-  return result.join("");
-}
 
-console.log(FormatString("hola!  ####HOLAAAA !!!_-2467"));
+  if (result.length === 0) {
+    return "ERROR";
+  } else {
+    return result.join("");
+  }
+}
+console.log("FormatString con error:, ", FormatString("+++++}{}{+"));
+
+console.log(
+  "FormatString con formateo:",
+  FormatString("HOLA!!!!,,,   51561 _-  ")
+);
